@@ -55,6 +55,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void next(View v) {
-        startActivity(new Intent(this, MainActivity_2.class));
+        //startActivity(new Intent(this, MainActivity_2.class));
+        Intent intent = new Intent(MainActivity.this, MainActivity_2.class);
+        //创建一个带“收件人地址”的email
+        Bundle bundle = new Bundle();//创建email内容
+        bundle.putBoolean("boolean_key",true);//编写内容
+        bundle.putString("string_key","string_value");
+        intent.putExtra("key",bundle); //封装email
+        startActivity(intent);//启动新的Activity
     }
 }
