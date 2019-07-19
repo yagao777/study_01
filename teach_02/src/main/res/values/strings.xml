@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">teach_02</string>
+    <string name="btn_add_text_view">添加给TextView</string>
+</resources>

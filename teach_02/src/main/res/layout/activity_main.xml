@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+    <!--
+    android:orientation用来设置LinearLayout 子View的排列方向，有两种vertical和horizontal
+    android:gravity 用来设置子View在LinearLayout中的对齐方式，这里设置了水平居中
+    -->
+
+    <!--
+        用来接收用户输入的输入框
+    -->
+    <EditText
+        android:id="@+id/et_test"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_set_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_add_text_view" />
+
+    <!--
+    Space并不是一个用来显示的控件，在布局中，通过android:layout_weight = "1"
+    能够让它填满LinearLayout剩余的空间，这里的作用是将下面的FrameLayout顶到底部
+    -->
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp">
+
+        <!--
+        这里android:layout_gravity的作用是用来设置其在FrameLayout中对齐方式
+        center就是让其居中显示
+        -->
+        <TextView
+            android:id="@+id/tv_1"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:background="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/tv_2"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:background="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/tv_3"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:layout_gravity="right"
+            android:background="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/tv_4"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:layout_gravity="bottom"
+            android:background="@color/colorPrimary" />
+
+        <!--
+        android:layout_gravity="bottom|end" 如果同时需要设置多个对齐方式，中间用 | 来分隔
+        -->
+        <TextView
+            android:id="@+id/tv_5"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:layout_gravity="bottom|end"
+            android:background="@color/colorPrimary" />
+    </FrameLayout>
+
+</LinearLayout>
