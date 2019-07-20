@@ -16,46 +16,52 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="10dp">
+
+            <!--
+            ImageView 的android:scaleType属性可以用来设置图片的显示模式，常用：
+            centerCrop，原理是放大图片的宽高，确保在控件宽高固定时，图片能够填满
+            整个控件。放大的程度：较短的边的宽度，刚好能够填充其所在的纬度。
+            其他模式，参考https://www.cnblogs.com/lgfrank/p/8341898.html
+            -->
 
             <ImageView
                 android:id="@+id/iv_1"
                 android:layout_width="120dp"
                 android:layout_height="60dp"
                 android:layout_centerVertical="true"
-                android:src="@mipmap/ic_launcher"
-                android:layout_marginLeft="10dp"/>
+                android:layout_marginLeft="10dp"
+                android:src="@mipmap/ic_launcher" />
 
             <TextView
                 android:id="@+id/tv_title1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/iv_1"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="8dp"
+                android:layout_marginTop="10dp"
                 android:layout_toRightOf="@+id/iv_1"
-                android:text="this is title1"
-                android:textSize="16sp"
-                android:textColor="@android:color/black"/>
+                android:text="this is title1" />
+
             <TextView
+                android:id="@+id/tv_sub_title1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_title1"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="8dp"
+                android:layout_marginTop="10dp"
                 android:layout_toRightOf="@+id/iv_1"
-                android:text="this is content1"
-                android:textSize="12sp"
-                android:textColor="@android:color/darker_gray"/>
+                android:text="this is content1" />
 
         </RelativeLayout>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="10dp">
 
             <ImageView
@@ -63,37 +69,40 @@
                 android:layout_width="120dp"
                 android:layout_height="60dp"
                 android:layout_centerVertical="true"
-                android:src="@mipmap/ic_launcher"
-                android:layout_marginLeft="10dp"/>
+                android:layout_marginLeft="10dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_launcher" />
 
             <TextView
                 android:id="@+id/tv_title2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/iv_2"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="8dp"
+                android:layout_marginTop="10dp"
                 android:layout_toRightOf="@+id/iv_2"
                 android:text="this is title2"
-                android:textSize="16sp"
-                android:textColor="@android:color/black"/>
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_title2"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="8dp"
+                android:layout_marginTop="10dp"
                 android:layout_toRightOf="@+id/iv_2"
                 android:text="this is content2"
-                android:textSize="12sp"
-                android:textColor="@android:color/darker_gray"/>
+                android:textColor="@android:color/darker_gray"
+                android:textSize="12sp" />
 
         </RelativeLayout>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="10dp">
 
             <ImageView
@@ -101,37 +110,40 @@
                 android:layout_width="120dp"
                 android:layout_height="60dp"
                 android:layout_centerVertical="true"
-                android:src="@mipmap/ic_launcher"
-                android:layout_marginLeft="10dp"/>
+                android:layout_marginLeft="10dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_launcher" />
 
             <TextView
                 android:id="@+id/tv_title3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/iv_3"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="8dp"
+                android:layout_marginTop="10dp"
                 android:layout_toRightOf="@+id/iv_3"
                 android:text="this is title3"
-                android:textSize="16sp"
-                android:textColor="@android:color/black"/>
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_title3"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="8dp"
+                android:layout_marginTop="10dp"
                 android:layout_toRightOf="@+id/iv_3"
                 android:text="this is content3"
-                android:textSize="12sp"
-                android:textColor="@android:color/darker_gray"/>
+                android:textColor="@android:color/darker_gray"
+                android:textSize="12sp" />
 
         </RelativeLayout>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="10dp">
 
             <ImageView
@@ -139,37 +151,40 @@
                 android:layout_width="120dp"
                 android:layout_height="60dp"
                 android:layout_centerVertical="true"
-                android:src="@mipmap/ic_launcher"
-                android:layout_marginLeft="10dp"/>
+                android:layout_marginLeft="10dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_launcher" />
 
             <TextView
                 android:id="@+id/tv_title4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/iv_4"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="8dp"
+                android:layout_marginTop="10dp"
                 android:layout_toRightOf="@+id/iv_4"
                 android:text="this is title4"
-                android:textSize="16sp"
-                android:textColor="@android:color/black"/>
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_title4"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="8dp"
+                android:layout_marginTop="10dp"
                 android:layout_toRightOf="@+id/iv_4"
                 android:text="this is content4"
-                android:textSize="12sp"
-                android:textColor="@android:color/darker_gray"/>
+                android:textColor="@android:color/darker_gray"
+                android:textSize="12sp" />
 
         </RelativeLayout>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="10dp">
 
             <ImageView
@@ -177,37 +192,40 @@
                 android:layout_width="120dp"
                 android:layout_height="60dp"
                 android:layout_centerVertical="true"
-                android:src="@mipmap/ic_launcher"
-                android:layout_marginLeft="10dp"/>
+                android:layout_marginLeft="10dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_launcher" />
 
             <TextView
                 android:id="@+id/tv_title5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/iv_5"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="8dp"
+                android:layout_marginTop="10dp"
                 android:layout_toRightOf="@+id/iv_5"
                 android:text="this is title5"
-                android:textSize="16sp"
-                android:textColor="@android:color/black"/>
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_title5"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="8dp"
+                android:layout_marginTop="10dp"
                 android:layout_toRightOf="@+id/iv_5"
                 android:text="this is content5"
-                android:textSize="12sp"
-                android:textColor="@android:color/darker_gray"/>
+                android:textColor="@android:color/darker_gray"
+                android:textSize="12sp" />
 
         </RelativeLayout>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="10dp">
 
             <ImageView
@@ -215,37 +233,40 @@
                 android:layout_width="120dp"
                 android:layout_height="60dp"
                 android:layout_centerVertical="true"
-                android:src="@mipmap/ic_launcher"
-                android:layout_marginLeft="10dp"/>
+                android:layout_marginLeft="10dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_launcher" />
 
             <TextView
                 android:id="@+id/tv_title6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/iv_6"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="8dp"
+                android:layout_marginTop="10dp"
                 android:layout_toRightOf="@+id/iv_6"
                 android:text="this is title6"
-                android:textSize="16sp"
-                android:textColor="@android:color/black"/>
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_title6"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="8dp"
+                android:layout_marginTop="10dp"
                 android:layout_toRightOf="@+id/iv_6"
                 android:text="this is content6"
-                android:textSize="12sp"
-                android:textColor="@android:color/darker_gray"/>
+                android:textColor="@android:color/darker_gray"
+                android:textSize="12sp" />
 
         </RelativeLayout>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="10dp">
 
             <ImageView
@@ -253,37 +274,40 @@
                 android:layout_width="120dp"
                 android:layout_height="60dp"
                 android:layout_centerVertical="true"
-                android:src="@mipmap/ic_launcher"
-                android:layout_marginLeft="10dp"/>
+                android:layout_marginLeft="10dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_launcher" />
 
             <TextView
                 android:id="@+id/tv_title7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/iv_7"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="8dp"
+                android:layout_marginTop="10dp"
                 android:layout_toRightOf="@+id/iv_7"
                 android:text="this is title7"
-                android:textSize="16sp"
-                android:textColor="@android:color/black"/>
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_title7"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="8dp"
+                android:layout_marginTop="10dp"
                 android:layout_toRightOf="@+id/iv_7"
                 android:text="this is content7"
-                android:textSize="12sp"
-                android:textColor="@android:color/darker_gray"/>
+                android:textColor="@android:color/darker_gray"
+                android:textSize="12sp" />
 
         </RelativeLayout>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="10dp">
 
             <ImageView
@@ -291,37 +315,40 @@
                 android:layout_width="120dp"
                 android:layout_height="60dp"
                 android:layout_centerVertical="true"
-                android:src="@mipmap/ic_launcher"
-                android:layout_marginLeft="10dp"/>
+                android:layout_marginLeft="10dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_launcher" />
 
             <TextView
                 android:id="@+id/tv_title8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/iv_8"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="8dp"
+                android:layout_marginTop="10dp"
                 android:layout_toRightOf="@+id/iv_8"
                 android:text="this is title8"
-                android:textSize="16sp"
-                android:textColor="@android:color/black"/>
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_title8"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="8dp"
+                android:layout_marginTop="10dp"
                 android:layout_toRightOf="@+id/iv_8"
                 android:text="this is content8"
-                android:textSize="12sp"
-                android:textColor="@android:color/darker_gray"/>
+                android:textColor="@android:color/darker_gray"
+                android:textSize="12sp" />
 
         </RelativeLayout>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="10dp">
 
             <ImageView
@@ -329,37 +356,40 @@
                 android:layout_width="120dp"
                 android:layout_height="60dp"
                 android:layout_centerVertical="true"
-                android:src="@mipmap/ic_launcher"
-                android:layout_marginLeft="10dp"/>
+                android:layout_marginLeft="10dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_launcher" />
 
             <TextView
                 android:id="@+id/tv_title9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/iv_9"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="8dp"
+                android:layout_marginTop="10dp"
                 android:layout_toRightOf="@+id/iv_9"
                 android:text="this is title9"
-                android:textSize="16sp"
-                android:textColor="@android:color/black"/>
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_title9"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="8dp"
+                android:layout_marginTop="10dp"
                 android:layout_toRightOf="@+id/iv_9"
                 android:text="this is content9"
-                android:textSize="12sp"
-                android:textColor="@android:color/darker_gray"/>
+                android:textColor="@android:color/darker_gray"
+                android:textSize="12sp" />
 
         </RelativeLayout>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="10dp">
 
             <ImageView
@@ -367,30 +397,32 @@
                 android:layout_width="120dp"
                 android:layout_height="60dp"
                 android:layout_centerVertical="true"
-                android:src="@mipmap/ic_launcher"
-                android:layout_marginLeft="10dp"/>
+                android:layout_marginLeft="10dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_launcher" />
 
             <TextView
                 android:id="@+id/tv_title10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/iv_10"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="8dp"
+                android:layout_marginTop="10dp"
                 android:layout_toRightOf="@+id/iv_10"
                 android:text="this is title10"
-                android:textSize="16sp"
-                android:textColor="@android:color/black"/>
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_title10"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="8dp"
+                android:layout_marginTop="10dp"
                 android:layout_toRightOf="@+id/iv_10"
                 android:text="this is content10"
-                android:textSize="12sp"
-                android:textColor="@android:color/darker_gray"/>
+                android:textColor="@android:color/darker_gray"
+                android:textSize="12sp" />
 
         </RelativeLayout>
 
