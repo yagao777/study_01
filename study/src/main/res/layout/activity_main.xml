@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/background_light"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+
+            <ImageView
+                android:id="@+id/iv_1"
+                android:layout_width="120dp"
+                android:layout_height="60dp"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/ic_launcher"
+                android:layout_marginLeft="10dp"/>
+
+            <TextView
+                android:id="@+id/tv_title1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/iv_1"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@+id/iv_1"
+                android:text="this is title1"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_title1"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@+id/iv_1"
+                android:text="this is content1"
+                android:textSize="12sp"
+                android:textColor="@android:color/darker_gray"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+
+            <ImageView
+                android:id="@+id/iv_2"
+                android:layout_width="120dp"
+                android:layout_height="60dp"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/ic_launcher"
+                android:layout_marginLeft="10dp"/>
+
+            <TextView
+                android:id="@+id/tv_title2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/iv_2"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@+id/iv_2"
+                android:text="this is title2"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_title2"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@+id/iv_2"
+                android:text="this is content2"
+                android:textSize="12sp"
+                android:textColor="@android:color/darker_gray"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+
+            <ImageView
+                android:id="@+id/iv_3"
+                android:layout_width="120dp"
+                android:layout_height="60dp"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/ic_launcher"
+                android:layout_marginLeft="10dp"/>
+
+            <TextView
+                android:id="@+id/tv_title3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/iv_3"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@+id/iv_3"
+                android:text="this is title3"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_title3"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@+id/iv_3"
+                android:text="this is content3"
+                android:textSize="12sp"
+                android:textColor="@android:color/darker_gray"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+
+            <ImageView
+                android:id="@+id/iv_4"
+                android:layout_width="120dp"
+                android:layout_height="60dp"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/ic_launcher"
+                android:layout_marginLeft="10dp"/>
+
+            <TextView
+                android:id="@+id/tv_title4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/iv_4"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@+id/iv_4"
+                android:text="this is title4"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_title4"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@+id/iv_4"
+                android:text="this is content4"
+                android:textSize="12sp"
+                android:textColor="@android:color/darker_gray"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+
+            <ImageView
+                android:id="@+id/iv_5"
+                android:layout_width="120dp"
+                android:layout_height="60dp"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/ic_launcher"
+                android:layout_marginLeft="10dp"/>
+
+            <TextView
+                android:id="@+id/tv_title5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/iv_5"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@+id/iv_5"
+                android:text="this is title5"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_title5"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@+id/iv_5"
+                android:text="this is content5"
+                android:textSize="12sp"
+                android:textColor="@android:color/darker_gray"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+
+            <ImageView
+                android:id="@+id/iv_6"
+                android:layout_width="120dp"
+                android:layout_height="60dp"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/ic_launcher"
+                android:layout_marginLeft="10dp"/>
+
+            <TextView
+                android:id="@+id/tv_title6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/iv_6"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@+id/iv_6"
+                android:text="this is title6"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_title6"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@+id/iv_6"
+                android:text="this is content6"
+                android:textSize="12sp"
+                android:textColor="@android:color/darker_gray"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+
+            <ImageView
+                android:id="@+id/iv_7"
+                android:layout_width="120dp"
+                android:layout_height="60dp"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/ic_launcher"
+                android:layout_marginLeft="10dp"/>
+
+            <TextView
+                android:id="@+id/tv_title7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/iv_7"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@+id/iv_7"
+                android:text="this is title7"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_title7"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@+id/iv_7"
+                android:text="this is content7"
+                android:textSize="12sp"
+                android:textColor="@android:color/darker_gray"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+
+            <ImageView
+                android:id="@+id/iv_8"
+                android:layout_width="120dp"
+                android:layout_height="60dp"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/ic_launcher"
+                android:layout_marginLeft="10dp"/>
+
+            <TextView
+                android:id="@+id/tv_title8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/iv_8"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@+id/iv_8"
+                android:text="this is title8"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_title8"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@+id/iv_8"
+                android:text="this is content8"
+                android:textSize="12sp"
+                android:textColor="@android:color/darker_gray"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+
+            <ImageView
+                android:id="@+id/iv_9"
+                android:layout_width="120dp"
+                android:layout_height="60dp"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/ic_launcher"
+                android:layout_marginLeft="10dp"/>
+
+            <TextView
+                android:id="@+id/tv_title9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/iv_9"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@+id/iv_9"
+                android:text="this is title9"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_title9"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@+id/iv_9"
+                android:text="this is content9"
+                android:textSize="12sp"
+                android:textColor="@android:color/darker_gray"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+
+            <ImageView
+                android:id="@+id/iv_10"
+                android:layout_width="120dp"
+                android:layout_height="60dp"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/ic_launcher"
+                android:layout_marginLeft="10dp"/>
+
+            <TextView
+                android:id="@+id/tv_title10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/iv_10"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@+id/iv_10"
+                android:text="this is title10"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_title10"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@+id/iv_10"
+                android:text="this is content10"
+                android:textSize="12sp"
+                android:textColor="@android:color/darker_gray"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</ScrollView>
