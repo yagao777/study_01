@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/recycler"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none" />
+
+<!--
+    RecyclerView是Android中使用频率非常高的控件，我们经常使用RecyclerView来做列表的展示。
+
+    对比上次在teach_03中使用的ScrollView，它们都可以用来做列表的展示，区别在于：
+
+    ScrollView的可以理解为赋予其包裹的内容滚动的能力，注意，它只能有一个子View！这个子View通常是LinearLayout，并且
+    LinearLayout需要设置布局方向为垂直(android:orientation="vertical")由于处在ScrollView中，它的高度是不受限制
+    的，我们可以让LinearLayout拥有很多个子View，这样使其总高度超过了一个屏幕的高度，这就有了让内容能够上下滚动的需求.
+    (否则我们无法完整的看到LinearLayout底部的内容)
+
+    但是，ScrollView有一个很大的缺陷，就是，当我们需要展示的内容很多，有非常多个列表Item时(比如，新闻app，展示的新闻
+    列表，它的Item数量总高度绝对超过一个屏幕)，此时我们不可能把每个Item都预先写入布局文件中，这就涉及到列表Item的动态
+    创建问题；
+
+    另一个缺点，就是涉及到手机资源的占用问题，ScrollView不会回收列表Item，它会直接全部绘制显示所有的Item，并显示到屏幕上
+    ，即使这个Item现在还在列表底部，没有被用户上滑显示出来，这在Item中有图片的情况下，是很有问题的，因为它会占用手机非常多
+    的内存，导致手机操作起来很卡。
+
+    RecyclerView正如它的名字一样，有"回收"View的作用，一般情况下，它只会绘制当前显示在屏幕上的Item，如果当前屏幕上只
+    能够显示下10个Item，那么即使它有10000个Item，它也只会绘制10；
+
+    当用户上下滑动屏幕上的列表时，会动态创建或者重用之前被回收的Item，然后动态显示到RecyclerView中；
+
+-->
