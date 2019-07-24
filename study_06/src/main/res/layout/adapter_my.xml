@@ -18,7 +18,7 @@
     <!--
     TextView的高度，我们一般是设置为wrap_content; 不要试图使用高度来实现控件的对齐，应该学会使用下面的属性：
     android:layout_alignTop="@id/iv_img" 让TextView的顶部与ImageView的顶部对齐，iv_img是ImageView的id
-    相应的还android:layout_alignBottom, android:layout_alignLeft, android:layout_alignRight等等
+    相应的还有android:layout_alignBottom, android:layout_alignLeft, android:layout_alignRight等等
     -->
     <TextView
         android:id="@+id/tv_title"
@@ -42,7 +42,7 @@
         tools:text="123123" />
 
     <!--
-    android:layout_below="@+id/tv_title"  @+id使用来声明id的，对应已经存在的id，不需要"+"，应改为@id/tv_title
+    android:layout_below="@+id/tv_title"  @+id是用来声明id的，对于已经存在的id，不需要"+"，应改为@id/tv_title
 
     -->
     <TextView
