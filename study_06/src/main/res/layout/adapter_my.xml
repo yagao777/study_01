@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="80dp"
-    xmlns:tools="http://schemas.android.com/tools"
     android:gravity="center_vertical"
     android:paddingLeft="10dp"
     android:paddingRight="10dp">
@@ -11,41 +11,58 @@
         android:id="@+id/iv_img"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
         android:scaleType="centerCrop" />
 
+    <!--
+    TextView的高度，我们一般是设置为wrap_content; 不要试图使用高度来实现控件的对齐，应该学会使用下面的属性：
+    android:layout_alignTop="@id/iv_img" 让TextView的顶部与ImageView的顶部对齐，iv_img是ImageView的id
+    相应的还android:layout_alignBottom, android:layout_alignLeft, android:layout_alignRight等等
+    -->
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_toRightOf="@+id/iv_img"
-        android:textSize="16sp"
-        android:textColor="#292929"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/iv_img"
+        android:layout_toRightOf="@id/iv_img"
         android:paddingLeft="5dp"
-        tools:text="123123"/>
+        android:layout_marginLeft="4dp"
+        android:textColor="#292929"
+        android:textSize="16sp"
+        tools:text="123123" />
+
     <TextView
         android:id="@+id/tv_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:textSize="16sp"
         android:textColor="#292929"
-        tools:text="123123"/>
+        android:textSize="16sp"
+        tools:text="123123" />
+
+    <!--
+    android:layout_below="@+id/tv_title"  @+id使用来声明id的，对应已经存在的id，不需要"+"，应改为@id/tv_title
+
+    -->
     <TextView
         android:id="@+id/tv_subtitle"
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_below="@+id/tv_title"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_title"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="4dp"
         android:layout_toRightOf="@+id/iv_img"
-        android:textColor="#292929"
-        android:textSize="16sp"
         android:paddingLeft="5dp"
-        tools:text="123123"/>
+        android:textColor="#292929"
+        android:maxLines="2"
+        android:textSize="16sp"
+        tools:text="123123" />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_alignParentBottom="true"
-        android:background="@android:color/darker_gray"/>
+        android:background="@android:color/darker_gray" />
 
 </RelativeLayout>
