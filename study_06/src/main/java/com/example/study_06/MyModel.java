@@ -1,4 +1,4 @@
-package com.example.study_05;
+package com.example.study_06;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -7,17 +7,20 @@ public class MyModel implements Parcelable {
     private String title;
     private String subTitle;
     private String url;
+    private long time;
 
-    public MyModel(String title, String subTitle, String url) {
+    public MyModel(String title, String subTitle, String url, long time) {
         this.title = title;
         this.subTitle = subTitle;
         this.url = url;
+        this.time = time;
     }
 
     protected MyModel(Parcel in) {
         title = in.readString();
         subTitle = in.readString();
         url = in.readString();
+        time = in.readLong();
     }
 
     @Override
@@ -25,6 +28,7 @@ public class MyModel implements Parcelable {
         dest.writeString(title);
         dest.writeString(subTitle);
         dest.writeString(url);
+        dest.writeLong(time);
     }
 
     @Override
@@ -66,5 +70,13 @@ public class MyModel implements Parcelable {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public long getTime() {
+        return time;
+    }
+
+    public void setTime(long time) {
+        this.time = time;
     }
 }

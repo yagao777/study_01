@@ -1,4 +1,4 @@
-package com.example.study_05;
+package com.example.study_06;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -64,7 +64,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (null != mListener) {
+                     if (null != mListener) {
                         mListener.onItemClick(models.get(getAdapterPosition()));
                     }
                 }

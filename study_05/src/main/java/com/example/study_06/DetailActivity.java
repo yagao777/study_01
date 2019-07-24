@@ -1,4 +1,4 @@
-package com.example.study_05;
+package com.example.study_06;
 
 import androidx.appcompat.app.AppCompatActivity;
 
