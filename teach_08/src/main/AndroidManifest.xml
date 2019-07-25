@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.teach_08">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <!--
+        一般情况下，我们打开App，直接就跳转到MainActivity，这事因为我们在这里配置了intent-filter，当我们点击App时，
+        系统会直接发出下面的Intent，如果中Activity配置了，就会被唤起。
+        我们这里改为LoginActivity来接收。
+        -->
+        <activity android:name=".LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!--去掉-MainActivity的Intent注册-->
+        <activity android:name=".MainActivity">
+        </activity>
+    </application>
+
+</manifest>
