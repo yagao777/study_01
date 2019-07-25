@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(MyModel model) {
                 // Item点击时，就会调用这个方法，在这里面我们做Activity的跳转
 
-                Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+                Intent intent = new Intent(MainActivity.this, DetailModifyActivity.class);
                 intent.putExtra("entity", model);
                 startActivity(intent);
         }
