@@ -1,4 +1,4 @@
-package com.example.study_07;
+package com.example.study_08;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -30,10 +30,10 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(MyModel model) {
                 // Item点击时，就会调用这个方法，在这里面我们做Activity的跳转
 
-                Intent intent = new Intent(MainActivity.this, DetailModifyActivity.class);
+                Intent intent = new Intent(MainActivity.this, DetailActivity.class);
                 intent.putExtra("entity", model);
                 startActivity(intent);
-        }
+            }
         });
     }
 
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private List<MyModel> mockData() {
         List<MyModel> models = new ArrayList<>();
         for (int i = 0; i < 50; i++) {
-            models.add(new MyModel("将进酒" + i, "君不见，黄河之水天上来，奔流到海不复回。\n" +
+            models.add(new MyModel("将进酒" , "君不见，黄河之水天上来，奔流到海不复回。\n" +
                     "君不见，高堂明镜悲白发，朝如青丝暮成雪。\n" +
                     "人生得意须尽欢，莫使金樽空对月。\n" +
                     "天生我材必有用，千金散尽还复来。\n" +

@@ -28,15 +28,14 @@ public class DetailActivity extends AppCompatActivity {
     private TextView tvTime2;
     private EditText etName;
 
+    MyModel model;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
         SharedPreferences sharedPreferences = getSharedPreferences("et_name", DetailActivity.MODE_PRIVATE);
-        etName.setText(sharedPreferences.getString("name", ""));
-
-
 
         ivImg2 = findViewById(R.id.iv_img2);
         tvTitle = findViewById(R.id.tv_title);
@@ -44,12 +43,12 @@ public class DetailActivity extends AppCompatActivity {
         tvTime2 = findViewById(R.id.tv_time2);
         etName = findViewById(R.id.et_name);
 
-        MyModel model = getIntent().getParcelableExtra("entity");
+        model = getIntent().getParcelableExtra("entity");
+        etName.setText(sharedPreferences.getString("name" + model.getTitle().hashCode(), ""));
         tvTitle.setText(model.getTitle());
         tvSubtitle.setText(model.getSubTitle());
         Glide.with(this).load(model.getUrl()).into(ivImg2);
         tvTime2.setText(format.format(model.getTime()));
-
 
 
     }
@@ -66,7 +65,7 @@ public class DetailActivity extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = getSharedPreferences("et_name", DetailActivity.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("et_name","");
+        editor.putString("name" + model.getTitle().hashCode(), etName.getText().toString());
         editor.commit();
 
         switch (item.getItemId()) {
