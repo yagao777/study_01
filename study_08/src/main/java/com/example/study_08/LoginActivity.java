@@ -12,8 +12,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import static com.example.study_08.LoginActivity.Config.USER_NAME;
-
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button loginBtn;
@@ -47,12 +45,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     }
 
-    public interface Config {
-        String TANG_POETRY = "tang_poetry";
-        String USER_NAME = "user_name";
-        String USER_PWD = "user_pwd";
-    }
-
     @Override
     public void onClick(View view) {
 
@@ -69,8 +61,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show();
 
                     Intent intent = new Intent(this, MainActivity.class);
-                    intent.putExtra("entity", "");
+                    // 如果你不需要传数据给MainActivity，这一句是可以省略的
+                    // intent.putExtra("entity", "");
                     startActivity(intent);
+                    // 跳转之后，这里最好结束掉页面
+                    finish();
                 } else {
                     Toast.makeText(this, "用户名或密码不正确", Toast.LENGTH_SHORT).show();
                 }
