@@ -1,5 +1,6 @@
-package com.example.teach_09.fragment;
+package com.example.study_10.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,10 +9,13 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.teach_09.R;
-import com.example.teach_09.model.MyModel;
+import com.example.study_10.DetailActivity;
+import com.example.study_10.R;
+import com.example.study_10.adapter.MyAdapter;
+import com.example.study_10.model.MyModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +50,7 @@ public class PoetryListFragment extends Fragment {
 
     }
 
+
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -54,9 +59,23 @@ public class PoetryListFragment extends Fragment {
 
         // 在这里可是开始做和View有关的初始化工作...
 
+        recycler.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false));
+
+        MyAdapter adapter = new MyAdapter(mockData());
+        recycler.setAdapter(adapter);
+
+        adapter.setOnItemClickListener(new MyAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(MyModel model) {
+                // Item点击时，就会调用这个方法，在这里面我们做Activity的跳转
+
+                Intent intent = new Intent(getActivity(), DetailActivity.class);
+                intent.putExtra("entity", model);
+                startActivity(intent);
+            }
+        });
 
     }
-
 
     private List<MyModel> mockData() {
         List<MyModel> models = new ArrayList<>();

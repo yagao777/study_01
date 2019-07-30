@@ -1,5 +1,6 @@
-package com.example.teach_09.fragment;
+package com.example.study_09;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,10 +9,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.teach_09.R;
-import com.example.teach_09.model.MyModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +33,7 @@ public class PoetryListFragment extends Fragment {
         // 到这一步， Fragment对应的View已经被创建出来，我们可以在这里找到所有的控件
         // ... findViewById
         recycler = view.findViewById(R.id.recycler);
+
     }
 
     @Override
@@ -49,14 +49,28 @@ public class PoetryListFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
         // 这个方法是Fragment中比较重要的，我们在Fragment中经常会用到Activity的实例(通过getActivity()方法)
         // 只有在这个方法执行之后，我们才能确定Activity已经被创建了，这时才能使用，否则拿到的是null
 
         // 在这里可是开始做和View有关的初始化工作...
+        recycler.setLayoutManager(new LinearLayoutManager(getActivity() ,RecyclerView.VERTICAL, false));
+
+        MyAdapter adapter = new MyAdapter(mockData());
+        recycler.setAdapter(adapter);
+        adapter.setOnItemClickListener(new MyAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(MyModel model) {
+                // Item点击时，就会调用这个方法，在这里面我们做Activity的跳转
+
+                Intent intent = new Intent(getActivity(), DetailActivity.class);
+                intent.putExtra("entity", model);
+                startActivity(intent);
+            }
+        });
 
 
     }
-
 
     private List<MyModel> mockData() {
         List<MyModel> models = new ArrayList<>();
