@@ -1,12 +1,11 @@
-package com.example.study_10.adapter;
+package com.example.study_11.adapter;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.example.study_10.fragment.PoetryDynamicFragment;
-import com.example.study_10.fragment.PoetryInfoAFragment;
-import com.example.study_10.fragment.PoetryListFragment;
+import com.example.study_11.fragment.PoetryDynamicFragment;
+import com.example.study_11.fragment.PoetryListFragment;
 
 // 当Fragment个数较少，且数量是确定时，我们继承自FragmentPagerAdapter
 public class PoetryPageAdapter extends FragmentPagerAdapter {
@@ -17,13 +16,11 @@ public class PoetryPageAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         if (position == 0)
-
             // 第一个页面
             return new PoetryListFragment();
         else
             // 第二个页面
             return new PoetryDynamicFragment();
-
     }
 
     // 这里返回总共有多少个Fragment

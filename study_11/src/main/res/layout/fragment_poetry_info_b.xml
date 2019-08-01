@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/iv_author2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_margin="20dp" />
+
+    <TextView
+        android:id="@+id/tv_author2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/iv_author2"
+        android:layout_alignTop="@id/iv_author2"
+        android:layout_alignBottom="@id/iv_author2"
+        android:gravity="center_vertical"
+        android:text="辛弃疾"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tv_content2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_author2"
+        android:layout_margin="20dp" />
+
+    <TextView
+        android:id="@+id/tv_time4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_below="@id/tv_content2"
+        android:layout_alignParentRight="true"/>
+
+
+</RelativeLayout>
