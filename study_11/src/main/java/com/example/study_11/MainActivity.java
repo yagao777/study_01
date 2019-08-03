@@ -20,10 +20,6 @@ import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
-//
-//    private View view1,view2;
-//    private ViewPager viewPager;
-//    private List<View> viewList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
