@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SettingActivity">
+
+    <include layout="@layout/toolbar_layout" />
+
+    <LinearLayout
+        android:id="@+id/ll_lema_layout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/shape_bg_line"
+        android:gravity="center_vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+        <ImageView
+            android:id="@+id/iv_lema_icon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/ic_login_lema" />
+
+        <TextView
+            android:id="@+id/tv_lema"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:text="乐马账号"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_lema_bind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/shape_setting_bind_bg"
+            android:text="绑定"
+            android:textColor="#ffffff" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_wechat_layout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#ffffff"
+        android:gravity="center_vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_lema_layout">
+
+        <ImageView
+            android:id="@+id/iv_wechat_icon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/no_bind_wechat" />
+
+        <TextView
+            android:id="@+id/tv_wechat"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:text="微信"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_wechat_bind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/shape_setting_unbind_bg"
+            android:text="解绑"
+            android:textColor="#000000" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_message_switch"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/shape_bg_line"
+        android:layout_marginTop="8dp"
+        android:text="消息通知"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:paddingLeft="20dp"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toBottomOf="@id/ll_wechat_layout"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <Switch
+        android:id="@+id/sw_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:checked="false"
+        android:thumb="@drawable/thumb_selector"
+        android:track="@drawable/track_selector"
+        app:layout_constraintTop_toTopOf="@id/tv_message_switch"
+        app:layout_constraintBottom_toBottomOf="@id/tv_message_switch"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+
+    <com.example.study_project_01.IconTextLayout
+        android:id="@+id/tv_clean"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/shape_bg_line"
+        android:textColor="#000000"
+        android:paddingLeft="5dp"
+        android:gravity="center_vertical"
+        app:contentText="@string/setting_clean_cache"
+        app:contentTextSize="18sp"
+        app:rightText="12mb"
+        app:layout_constraintTop_toBottomOf="@id/tv_message_switch"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <com.example.study_project_01.IconTextLayout
+        android:id="@+id/tv_language"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/shape_bg_line"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:paddingLeft="5dp"
+        android:gravity="center_vertical"
+        app:contentText="@string/language_label"
+        app:contentTextSize="18sp"
+        app:rightText="@string/language_china"
+        app:layout_constraintTop_toBottomOf="@id/tv_clean"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_font_size"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/shape_bg_line"
+        android:text="字体大小"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:paddingLeft="20dp"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toBottomOf="@id/tv_language"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_password_hint"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#ffffff"
+        android:text="修改密码"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:paddingLeft="20dp"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toBottomOf="@id/tv_font_size"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_about"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#ffffff"
+        android:layout_marginTop="10dp"
+        android:text="关于我们"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:paddingLeft="20dp"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toBottomOf="@id/tv_password_hint"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_login_out"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#ffffff"
+        android:layout_marginTop="10dp"
+        android:text="退出登录"
+        android:textColor="#416ba9"
+        android:textSize="18sp"
+        android:paddingLeft="20dp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/tv_about"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

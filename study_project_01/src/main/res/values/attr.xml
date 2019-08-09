@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <declare-styleable name="IconTextLayout">
+        <attr name="icon" format="reference" />
+        <attr name="contentText" format="reference|string" />
+        <attr name="rightText" format="reference|string" />
+        <attr name="showRightArrow" format="boolean|reference" />
+        <attr name="rightTextSize" format="dimension" />
+        <attr name="contentTextSize" format="dimension" />
+
+    </declare-styleable>
+
+</resources>

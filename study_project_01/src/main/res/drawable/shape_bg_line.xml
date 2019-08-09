@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--底层使用白色填充色-->
+    <item>
+
+        <shape>
+            <solid android:color="#FFFFFF" />
+
+        </shape>
+    </item>
+
+
+    <!--使用灰色划线-->
+    <item
+        android:gravity="bottom"
+        android:left="20dp"
+        android:right="20dp">
+
+        <shape>
+            <solid android:color="#D5D5D5" />
+
+            <size android:height="1px" />
+        </shape>
+    </item>
+
+</layer-list>
