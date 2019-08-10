@@ -19,7 +19,7 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
     private TextView tv_wechat_bind;
     private ImageView iv_wechat_icon;
     private TextView tv_language;
-    private Context mContext;
+//    private Context mContext;
     private AlertDialog alert = null;
     private AlertDialog.Builder builder = null;
 
@@ -33,7 +33,7 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
-        mContext = SettingActivity.this;
+//        mContext = SettingActivity.this;
         bindView();
     }
 
@@ -114,14 +114,14 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
             //普通对话框
             case R.id.tv_lema_bind:
                 alert = null;
-                builder = new AlertDialog.Builder(mContext);
+                builder = new AlertDialog.Builder(this);
                 alert = builder
                         .setTitle("绑定：")
                         .setMessage("确定要绑定乐马账号吗？")
                         .setNegativeButton("取消", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Toast.makeText(mContext, "取消绑定", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SettingActivity.this, "取消绑定", Toast.LENGTH_SHORT).show();
                                 unlemaBinded = true;
                                 unbindlema();
                             }
@@ -129,7 +129,7 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
                         .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Toast.makeText(mContext, "绑定成功", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SettingActivity.this, "绑定成功", Toast.LENGTH_SHORT).show();
                                 lemaBinded = true;
                                 bindlema();
                             }
@@ -139,14 +139,14 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
 
             case R.id.tv_wechat_bind:
                 alert = null;
-                builder = new AlertDialog.Builder(mContext);
+                builder = new AlertDialog.Builder(this);
                 alert = builder
                         .setTitle("解绑：")
                         .setMessage("确定要解绑微信吗？")
                         .setNegativeButton("取消", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Toast.makeText(mContext, "解绑取消", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SettingActivity.this, "解绑取消", Toast.LENGTH_SHORT).show();
                                 unwechatBinded = true;
                                 unbindwechat();
                             }
@@ -154,7 +154,7 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
                         .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Toast.makeText(mContext, "解绑成功", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SettingActivity.this, "解绑成功", Toast.LENGTH_SHORT).show();
                                 wechatBinded = true;
                                 bindwechat();
                             }
@@ -165,7 +165,7 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
             case R.id.tv_language:
                 final String[] languages = new String[]{"简体中文", "繁体中文", "英语"};
                 alert = null;
-                builder = new AlertDialog.Builder(mContext);
+                builder = new AlertDialog.Builder(this);
                 alert = builder
                         .setTitle("请选择你喜欢语言")
                         .setSingleChoiceItems(languages, 0, new DialogInterface.OnClickListener() {

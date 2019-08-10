@@ -14,8 +14,7 @@
     <!--使用灰色划线-->
     <item
         android:gravity="bottom"
-        android:left="20dp"
-        android:right="20dp">
+        android:left="20dp">
 
         <shape>
             <solid android:color="#D5D5D5" />

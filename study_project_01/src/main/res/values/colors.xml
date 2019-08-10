@@ -6,4 +6,6 @@
 
     <color name="bind_black_color">#000</color>
     <color name="window_bg">#f5f5f5</color>
+    <color name="white">#fff</color>
+    <color name="divider">#F4F4F4</color>
 </resources>
