@@ -2,6 +2,7 @@ package com.example.study_project_01;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -18,7 +19,7 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
     private ImageView iv_lema_icon;
     private TextView tv_wechat_bind;
     private ImageView iv_wechat_icon;
-    private TextView tv_language;
+    private IconTextLayout tv_language;
 //    private Context mContext;
     private AlertDialog alert = null;
     private AlertDialog.Builder builder = null;
@@ -50,6 +51,16 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
         bindlema();
         unbindwechat();
 
+        Toolbar toolbar = findViewById(R.id.toolbar);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                if (!isFinishing()) {
+                    finish();
+                }
+            }
+        });
     }
 
     private void bindlema() {

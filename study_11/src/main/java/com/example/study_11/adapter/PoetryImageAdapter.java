@@ -48,6 +48,7 @@ public class PoetryImageAdapter extends PagerAdapter {
 
         container.addView(view);
 
+
         return view;
     }
 
