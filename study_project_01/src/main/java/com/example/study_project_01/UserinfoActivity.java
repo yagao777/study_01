@@ -71,7 +71,7 @@ public class UserinfoActivity extends AppCompatActivity {
         tv_name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(UserinfoActivity.this,MessageActivity.class);
+                Intent intent = new Intent(UserinfoActivity.this, MessageActivity.class);
                 startActivity(intent);
             }
         });
@@ -112,19 +112,18 @@ public class UserinfoActivity extends AppCompatActivity {
         Cursor cursor = sqLiteDatabase1.query("user", new String[]{"id",
                 "name"}, "id = ?", new String[]{id}, null, null, null);
 
-        String userId = null;
-        String name = null;
-
+        // 只有在数据库有内容的情况下才对tv_name进行赋值
         if (cursor.moveToNext()) {
-            userId = cursor.getString(cursor.getColumnIndex("id"));
-            name = cursor.getString(cursor.getColumnIndex("name"));
+            String userId = cursor.getString(cursor.getColumnIndex("id"));
+            String name = cursor.getString(cursor.getColumnIndex("name"));
 
             Log.d("yagao", "userId:" + userId + "name:" + name);
             cursor.close();
-        }
 
-        tv_name.setText(userId);
-        tv_name.setText(name);
+            // 重复了
+//          tv_name.setText(userId);
+            tv_name.setText(name);
+        }
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -134,7 +133,7 @@ public class UserinfoActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
-                if (position == 0){
+                if (position == 0) {
 //                    tv_info_content.setTextColor(getResources().getColor(R.color.colorAccent));
 //                    tv_info_answer.setTextColor(getResources().getColor(R.color.bind_black_color));
 //                    tv_info_circle.setTextColor(getResources().getColor(R.color.bind_black_color));
@@ -143,7 +142,7 @@ public class UserinfoActivity extends AppCompatActivity {
                     tv_info_answer.setHovered(false);
                     tv_info_circle.setHovered(false);
 
-                } else if (position == 1){
+                } else if (position == 1) {
 //                    tv_info_answer.setTextColor(getResources().getColor(R.color.colorAccent));
 //                    tv_info_content.setTextColor(getResources().getColor(R.color.bind_black_color));
 //                    tv_info_circle.setTextColor(getResources().getColor(R.color.bind_black_color));
@@ -151,7 +150,7 @@ public class UserinfoActivity extends AppCompatActivity {
                     tv_info_content.setHovered(false);
                     tv_info_answer.setHovered(true);
                     tv_info_circle.setHovered(false);
-                } else if (position == 2){
+                } else if (position == 2) {
 //                    tv_info_circle.setTextColor(getResources().getColor(R.color.colorAccent));
 //                    tv_info_content.setTextColor(getResources().getColor(R.color.bind_black_color));
 //                    tv_info_answer.setTextColor(getResources().getColor(R.color.bind_black_color));
