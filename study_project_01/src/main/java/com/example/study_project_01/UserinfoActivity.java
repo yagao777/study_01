@@ -2,8 +2,11 @@ package com.example.study_project_01;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -12,10 +15,18 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.study_project_01.Adapter.AnswerAdapter;
+import com.example.study_project_01.Adapter.CircleAdapter;
+import com.example.study_project_01.Adapter.ContentAdapter;
 import com.example.study_project_01.Adapter.UserinfoPageAdapter;
 import com.example.study_project_01.Model.AnswerModel;
 import com.example.study_project_01.Model.CircleModel;
 import com.example.study_project_01.Model.ContentModel;
+import com.example.study_project_01.event.UpdateUserEvent;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,12 +35,19 @@ public class UserinfoActivity extends AppCompatActivity {
     private TextView tv_info_content;
     private TextView tv_info_answer;
     private TextView tv_info_circle;
-
+    private TextView tv_name;
     private ImageView iv_back;
+
+    private SQLiteDatabase sqLiteDatabase1;
+    private MessageSQLiteOpenHelper dbHelper1;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // 注册EventBus
+        EventBus.getDefault().register(this);
+
         setContentView(R.layout.activity_userinfo);
 
         iv_back = findViewById(R.id.iv_back);
@@ -48,6 +66,15 @@ public class UserinfoActivity extends AppCompatActivity {
         tv_info_content = findViewById(R.id.tv_info_content);
         tv_info_answer = findViewById(R.id.tv_info_answer);
         tv_info_circle = findViewById(R.id.tv_info_circle);
+        tv_name = findViewById(R.id.tv_name);
+
+        tv_name.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(UserinfoActivity.this,MessageActivity.class);
+                startActivity(intent);
+            }
+        });
 
         viewPager.setAdapter(new UserinfoPageAdapter(this, mockData1(), mockData2(), mockData3()));
 
@@ -73,6 +100,31 @@ public class UserinfoActivity extends AppCompatActivity {
         });
 
         tv_info_content.setHovered(true);
+
+        //查询tv_name
+        dbHelper1 = new MessageSQLiteOpenHelper(getApplicationContext(), "test_carson");
+        sqLiteDatabase1 = dbHelper1.getWritableDatabase();
+
+        System.out.println("查询数据");
+
+        String id = "1";
+
+        Cursor cursor = sqLiteDatabase1.query("user", new String[]{"id",
+                "name"}, "id = ?", new String[]{id}, null, null, null);
+
+        String userId = null;
+        String name = null;
+
+        if (cursor.moveToNext()) {
+            userId = cursor.getString(cursor.getColumnIndex("id"));
+            name = cursor.getString(cursor.getColumnIndex("name"));
+
+            Log.d("yagao", "userId:" + userId + "name:" + name);
+            cursor.close();
+        }
+
+        tv_name.setText(userId);
+        tv_name.setText(name);
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -144,4 +196,16 @@ public class UserinfoActivity extends AppCompatActivity {
         return circleModels;
     }
 
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onUpdateUser(UpdateUserEvent event) {
+        tv_name.setText(event.userName);
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
 }

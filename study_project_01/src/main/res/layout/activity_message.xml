@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SettingActivity">
+
+    <include layout="@layout/toolbar_layout" />
+
+    <LinearLayout
+        android:id="@+id/ll_img_layout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/shape_bg_line"
+        android:gravity="center_vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+
+        <TextView
+            android:id="@+id/tv_img"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:text="头像"
+            android:textColor="#000000"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/iv_img"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/icon_default_avatar"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_username"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/shape_bg_line"
+        android:gravity="center_vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_img_layout">
+
+        <TextView
+            android:id="@+id/tv_username"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="用户名"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:paddingLeft="20dp"
+            android:gravity="center_vertical" />
+        <TextView
+            android:id="@+id/tv_et_username"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="20dp"
+            android:gravity="center_vertical"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_introduce"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/shape_bg_line"
+        android:gravity="center_vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_username">
+
+        <TextView
+            android:id="@+id/tv_introduce"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="介绍"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:paddingLeft="20dp"
+            android:gravity="center_vertical" />
+        <TextView
+            android:id="@+id/tv_et_introduce"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginRight="20dp"
+            android:gravity="center_vertical|right"
+            android:ellipsize="end"
+            android:maxLines="3"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_sex"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/shape_bg_line"
+        android:gravity="center_vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_introduce">
+
+        <TextView
+            android:id="@+id/tv_sex"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="性别"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:paddingLeft="20dp"
+            android:gravity="center_vertical" />
+        <TextView
+            android:id="@+id/tv_et_sex"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="20dp"
+            android:gravity="center_vertical"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_birth"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/shape_bg_line"
+        android:gravity="center_vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_sex">
+
+        <TextView
+            android:id="@+id/tv_birth"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="生日"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:paddingLeft="20dp"
+            android:gravity="center_vertical" />
+        <TextView
+            android:id="@+id/tv_et_birth"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="20dp"
+            android:gravity="center_vertical"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_area"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/shape_bg_line"
+        android:gravity="center_vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_birth">
+
+        <TextView
+            android:id="@+id/tv_area"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="区域"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:paddingLeft="20dp"
+            android:gravity="center_vertical" />
+        <TextView
+            android:id="@+id/tv_et_area"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="20dp"
+            android:gravity="center_vertical"/>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
