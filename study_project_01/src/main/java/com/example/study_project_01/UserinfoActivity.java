@@ -117,7 +117,7 @@ public class UserinfoActivity extends AppCompatActivity {
             String userId = cursor.getString(cursor.getColumnIndex("id"));
             String name = cursor.getString(cursor.getColumnIndex("name"));
 
-            Log.d("yagao", "userId:" + userId + "name:" + name);
+            Log.d("yagao", "userId:" + userId + ",name:" + name);
             cursor.close();
 
             // 重复了

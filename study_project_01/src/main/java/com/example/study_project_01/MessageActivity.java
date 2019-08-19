@@ -21,6 +21,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.study_project_01.Model.MessageModel;
 import com.example.study_project_01.event.UpdateUserEvent;
 
 import org.greenrobot.eventbus.EventBus;
@@ -28,7 +29,8 @@ import org.greenrobot.eventbus.EventBus;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
+import java.util.List;
+
 
 public class MessageActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -52,7 +54,12 @@ public class MessageActivity extends AppCompatActivity implements View.OnClickLi
     private MessageSQLiteOpenHelper dbHelper1;
     private SQLiteDatabase sqLiteDatabase1;
 
-    private boolean hasRecord = false;
+//    private boolean hasRecord = false;
+
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+
+    private MessageModel messageModel = new MessageModel();
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -82,9 +89,7 @@ public class MessageActivity extends AppCompatActivity implements View.OnClickLi
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!isFinishing()) {
-                    finish();
-                }
+                onBackPressed();
             }
         });
 
@@ -99,34 +104,40 @@ public class MessageActivity extends AppCompatActivity implements View.OnClickLi
         Cursor cursor = sqLiteDatabase1.query("user", new String[]{"id",
                 "name", "introduce", "birth"}, "id = ?", new String[]{id}, null, null, null);
 
-        String userId = null;
+        int userId = 0;
         String name = null;
         String introduce = null;
-        String birth = null;
+        long birth = 0;
 
         //      select * from User where id = ?, name = ?
         //      String[]{"1", "hhh"}
 
         if (cursor.moveToNext()) {
-            userId = cursor.getString(cursor.getColumnIndex("id"));
+            userId = cursor.getInt(cursor.getColumnIndex("id"));
             name = cursor.getString(cursor.getColumnIndex("name"));
             introduce = cursor.getString(cursor.getColumnIndex("introduce"));
-            birth = cursor.getString(cursor.getColumnIndex("birth"));
-            hasRecord = true;
+            birth = cursor.getLong(cursor.getColumnIndex("birth"));
+
+            messageModel.setUserId(userId);
+            messageModel.setName(name);
+            messageModel.setIntroduce(introduce);
+            messageModel.setBirth(birth);
+
+//            hasRecord = true;
             Log.d("yagao", "userId:" + userId + "name:" + name + "introduce:" + introduce + "birth:" + birth);
             cursor.close();
+
+            tv_et_username.setText(name);
+            tv_et_introduce.setText(introduce);
+
         }
 
-//        tv_et_username.setText(userId);
-        tv_et_username.setText(name);
-        tv_et_introduce.setText(introduce);
-        tv_et_birth.setText(birth);
+        if (birth > 0) {
+            Date date = new Date();
+            date.setTime(birth);
 
-
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
-
-        tv_et_birth.setText(dateFormat.format(new Date()));
-
+            tv_et_birth.setText(dateFormat.format(date));
+        }
     }
 
     @Override
@@ -148,37 +159,31 @@ public class MessageActivity extends AppCompatActivity implements View.OnClickLi
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
                                         String content = usernameInput.getText().toString();
-                                        if (!hasRecord) {
-
-                                            // insert
-                                            tv_et_username.setText(content);
-
-                                            System.out.println("插入数据");
-
-                                            ContentValues values1 = new ContentValues();
-//                                       values1.put("id", 1);
-                                            values1.put("name", content);
-//                                        tv_et_username.getText();
-
-                                            sqLiteDatabase1.insert("user", null, values1);
-
-                                        } else {
-                                            // 更新
-                                            System.out.println("修改数据");
-                                            tv_et_username.setText(content);
-
-                                            ContentValues values2 = new ContentValues();
-//                                        values2.put("name", "zhangsan");
-                                            values2.put("name", content);
-
-                                            // 调用update方法修改数据库
-//                sqliteDatabase2.update("user", values2, "id=?", new String[]{"1"});
-
-                                            sqLiteDatabase1.update("user", values2, "id=?", new String[]{"1"});
-                                        }
+                                        messageModel.setName(content);
+                                        tv_et_username.setText(content);
+//                                        if (!hasRecord) {
+//
+//                                            // insert
+//                                            tv_et_username.setText(content);
+//
+//
+//                                        } else {
+//                                            // 更新
+//                                            System.out.println("修改数据");
+//                                            tv_et_username.setText(content);
+//
+//                                            ContentValues values2 = new ContentValues();
+////                                        values2.put("name", "zhangsan");
+//                                            values2.put("name", content);
+//
+//                                            // 调用update方法修改数据库
+////                sqliteDatabase2.update("user", values2, "id=?", new String[]{"1"});
+//
+////                                            sqLiteDatabase1.update("user", values2, "id=?", new String[]{"1"});
+//                                            messageModel.setUsername(tv_et_username.getText().toString());
+//                                        }
                                         //关闭数据库
 //                                        sqLiteDatabase1.close();
-
                                         // 发射事件
                                         UpdateUserEvent.sendEvent(new UpdateUserEvent(content));
                                     }
@@ -206,27 +211,27 @@ public class MessageActivity extends AppCompatActivity implements View.OnClickLi
                         .setPositiveButton("确定",
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
-                                        if (!hasRecord) {
-                                            String content = introduceInput.getText().toString();
-                                            tv_et_introduce.setText(content);
-                                            System.out.println("插入介绍数据");
+//                                        if (!hasRecord) {
+//                                            String content = introduceInput.getText().toString();
+//                                            tv_et_introduce.setText(content);
+//                                            messageModel.setIntroduce(content);
+//
+//                                        } else {
+//                                            String content = introduceInput.getText().toString();
+//                                            tv_et_introduce.setText(content);
+//                                            System.out.println("修改介绍数据");
+//
+//                                            ContentValues values2 = new ContentValues();
+//                                            values2.put("introduce", content);
+//
+////                                            sqLiteDatabase1.update("user", values2, "id=?", new String[]{"1"});
+//                                            messageModel.setIntroduce(tv_et_introduce.getText().toString());
+//
+//                                        }
 
-                                            ContentValues values1 = new ContentValues();
-                                            values1.put("introduce", content);
-
-                                            sqLiteDatabase1.insert("user", null, values1);
-
-                                        } else {
-                                            String content = introduceInput.getText().toString();
-                                            tv_et_introduce.setText(content);
-                                            System.out.println("修改介绍数据");
-
-                                            ContentValues values2 = new ContentValues();
-                                            values2.put("introduce", content);
-
-                                            sqLiteDatabase1.update("user", values2, "id=?", new String[]{"1"});
-
-                                        }
+                                        String content = introduceInput.getText().toString();
+                                        tv_et_introduce.setText(content);
+                                        messageModel.setIntroduce(tv_et_introduce.getText().toString());
 
 //                                        sqLiteDatabase1.close();
                                     }
@@ -271,6 +276,9 @@ public class MessageActivity extends AppCompatActivity implements View.OnClickLi
                             @Override
                             public void onDateChanged(DatePicker datePicker, int i, int i1, int i2) {
                                 calendar.set(i, i1, i2);
+                                messageModel.setBirth(calendar.getTimeInMillis());
+                                String date = "" + datePicker.getYear() + "/" + (datePicker.getMonth() + 1) + "/" + datePicker.getDayOfMonth();
+                                tv_et_birth.setText(date);
                             }
                         });
 
@@ -282,38 +290,40 @@ public class MessageActivity extends AppCompatActivity implements View.OnClickLi
                     public void onClick(View view) {
                         calendar.set(datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth());
                         dialog.dismiss();
-
+                        messageModel.setBirth(calendar.getTimeInMillis());
+                        String date = "" + datePicker.getYear() + "/" + (datePicker.getMonth() + 1) + "/" + datePicker.getDayOfMonth();
+                        tv_et_birth.setText(date);
 //                        long timeInMillis = calendar.getTimeInMillis();
 
-                        if (!hasRecord) {
-//                            String content = datePicker.getText().toString();
-                            long timeInMillis = calendar.getTimeInMillis();
-
-                            String date = "" + datePicker.getYear() + "/" + datePicker.getMonth() + "/" + datePicker.getDayOfMonth();
-
-                            tv_et_birth.setText((int) timeInMillis);
-                            System.out.println("插入生日数据");
-
-                            ContentValues values1 = new ContentValues();
-                            values1.put("birth", timeInMillis);
-
-                            sqLiteDatabase1.insert("user", null, values1);
-
-                        } else {
-//                            String content = DatePicker_birth.getText().toString();
-                            long timeInMillis = calendar.getTimeInMillis();
-
-                            String date = "" + datePicker.getYear() + "/" + datePicker.getMonth() + "/" + datePicker.getDayOfMonth();
-
-                            tv_et_birth.setText(date);
-                            System.out.println("修改生日数据");
-
-                            ContentValues values2 = new ContentValues();
-                            values2.put("birth", timeInMillis);
-
-                            sqLiteDatabase1.update("user", values2, "id=?", new String[]{"1"});
-
-                        }
+//                        if (!hasRecord) {
+////                            String content = datePicker.getText().toString();
+//                            long timeInMillis = calendar.getTimeInMillis();
+//
+//                            String date = "" + datePicker.getYear() + "/" + (datePicker.getMonth() + 1) + "/" + datePicker.getDayOfMonth();
+//
+////                            tv_et_birth.setText((int) timeInMillis);
+//                            tv_et_birth.setText(date);
+//
+//                            messageModel.setBirth(timeInMillis);
+//
+//
+//                        } else {
+////                            String content = DatePicker_birth.getText().toString();
+//                            long timeInMillis = calendar.getTimeInMillis();
+//
+//                            String date = "" + datePicker.getYear() + "/" + (datePicker.getMonth() + 1) + "/" + datePicker.getDayOfMonth();
+//
+//                            tv_et_birth.setText(date);
+//                            System.out.println("修改生日数据");
+//
+//                            ContentValues values2 = new ContentValues();
+//                            values2.put("birth", timeInMillis);
+//
+////                            sqLiteDatabase1.update("user", values2, "id=?", new String[]{"1"});
+////                            messageModel.setBirth(tv_et_birth.getText().length());
+//                            messageModel.setBirth(calendar.getTimeInMillis());
+//
+//                        }
                     }
                 });
 
@@ -369,6 +379,37 @@ public class MessageActivity extends AppCompatActivity implements View.OnClickLi
 
         }
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        System.out.println("插入数据");
+
+        ContentValues values1 = new ContentValues();
+        values1.put("name", messageModel.getName());
+
+//        sqLiteDatabase1.insert("user", null, values1);
+
+        System.out.println("插入介绍数据");
+
+//        ContentValues values1 = new ContentValues();
+        values1.put("introduce", messageModel.getIntroduce());
+
+//        sqLiteDatabase1.insert("user", null, values1);
+
+        System.out.println("插入生日数据");
+
+//        ContentValues values1 = new ContentValues();
+        values1.put("birth", messageModel.getBirth());
+
+        if (messageModel.getUserId() > 0) {
+            String id = String.valueOf(messageModel.getUserId());
+            sqLiteDatabase1.update("user", values1, "id=?", new String[]{id});
+        } else {
+            sqLiteDatabase1.insert("user", null, values1);
+        }
+
+        super.onBackPressed();
     }
 
     @Override
