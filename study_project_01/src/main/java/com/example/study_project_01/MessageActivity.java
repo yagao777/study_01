@@ -34,10 +34,7 @@ import java.util.List;
 
 public class MessageActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private static final String TAG = "MessageActivity";
-
-
-    final Context context = this;
+//    final Context context = this;
     private TextView tv_img;
     private TextView tv_username;
     private TextView tv_introduce;
@@ -53,8 +50,6 @@ public class MessageActivity extends AppCompatActivity implements View.OnClickLi
     private AlertDialog.Builder builder = null;
     private MessageSQLiteOpenHelper dbHelper1;
     private SQLiteDatabase sqLiteDatabase1;
-
-//    private boolean hasRecord = false;
 
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 
@@ -99,45 +94,45 @@ public class MessageActivity extends AppCompatActivity implements View.OnClickLi
 
         System.out.println("查询数据");
 
+        // 一般情况下，这个id应该是从上个页面通过intent传递进来的，
         String id = "1";
 
         Cursor cursor = sqLiteDatabase1.query("user", new String[]{"id",
                 "name", "introduce", "birth"}, "id = ?", new String[]{id}, null, null, null);
 
-        int userId = 0;
-        String name = null;
-        String introduce = null;
-        long birth = 0;
+//        int userId = 0;
+//        String name = null;
+//        String introduce = null;
+//        long birth = 0;
 
         //      select * from User where id = ?, name = ?
         //      String[]{"1", "hhh"}
 
         if (cursor.moveToNext()) {
-            userId = cursor.getInt(cursor.getColumnIndex("id"));
-            name = cursor.getString(cursor.getColumnIndex("name"));
-            introduce = cursor.getString(cursor.getColumnIndex("introduce"));
-            birth = cursor.getLong(cursor.getColumnIndex("birth"));
+            int userId = cursor.getInt(cursor.getColumnIndex("id"));
+            String name = cursor.getString(cursor.getColumnIndex("name"));
+            String introduce = cursor.getString(cursor.getColumnIndex("introduce"));
+            long birth = cursor.getLong(cursor.getColumnIndex("birth"));
 
             messageModel.setUserId(userId);
             messageModel.setName(name);
             messageModel.setIntroduce(introduce);
             messageModel.setBirth(birth);
 
-//            hasRecord = true;
             Log.d("yagao", "userId:" + userId + "name:" + name + "introduce:" + introduce + "birth:" + birth);
             cursor.close();
 
             tv_et_username.setText(name);
             tv_et_introduce.setText(introduce);
 
+            if (birth > 0) {
+                Date date = new Date();
+                date.setTime(birth);
+                tv_et_birth.setText(dateFormat.format(date));
+            }
+
         }
 
-        if (birth > 0) {
-            Date date = new Date();
-            date.setTime(birth);
-
-            tv_et_birth.setText(dateFormat.format(date));
-        }
     }
 
     @Override
@@ -146,9 +141,10 @@ public class MessageActivity extends AppCompatActivity implements View.OnClickLi
 
             case R.id.tv_username:
 
-                LayoutInflater li_username = LayoutInflater.from(context);
+                // this 就是context
+                LayoutInflater li_username = LayoutInflater.from(this);
                 View usernameView = li_username.inflate(R.layout.username_alertdaialog, null);
-                AlertDialog.Builder usernameBuilder = new AlertDialog.Builder(context);
+                AlertDialog.Builder usernameBuilder = new AlertDialog.Builder(this);
                 usernameBuilder.setView(usernameView);
                 final EditText usernameInput = usernameView.findViewById(R.id.ad_information);
                 usernameInput.setHint("请输入您想要修改的昵称");
@@ -185,7 +181,7 @@ public class MessageActivity extends AppCompatActivity implements View.OnClickLi
                                         //关闭数据库
 //                                        sqLiteDatabase1.close();
                                         // 发射事件
-                                        UpdateUserEvent.sendEvent(new UpdateUserEvent(content));
+//                                        UpdateUserEvent.sendEvent(new UpdateUserEvent(content));
                                     }
                                 })
                         .setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -200,9 +196,9 @@ public class MessageActivity extends AppCompatActivity implements View.OnClickLi
 
             case R.id.tv_introduce:
 
-                LayoutInflater li_introduce = LayoutInflater.from(context);
+                LayoutInflater li_introduce = LayoutInflater.from(this);
                 View introduceView = li_introduce.inflate(R.layout.username_alertdaialog, null);
-                AlertDialog.Builder introduceBuilder = new AlertDialog.Builder(context);
+                AlertDialog.Builder introduceBuilder = new AlertDialog.Builder(this);
                 introduceBuilder.setView(introduceView);
                 final EditText introduceInput = introduceView.findViewById(R.id.ad_information);
                 introduceInput.setHint("请输入您想要修改的介绍");
@@ -262,14 +258,22 @@ public class MessageActivity extends AppCompatActivity implements View.OnClickLi
                 break;
 
             case R.id.tv_birth:
-                final AlertDialog dialog = new AlertDialog.Builder(this).create();
-                dialog.show();
-                LayoutInflater li_birth = LayoutInflater.from(context);
+
+
+
+                LayoutInflater li_birth = LayoutInflater.from(this);
                 View birthView = li_birth.inflate(R.layout.birth_dialog, null);
-                dialog.getWindow().setContentView(birthView);
-                //dialog.getWindow().setGravity(Gravity.CENTER_HORIZONTAL|Gravity.BOTTOM);//设置Dialog现实的位置
-                final DatePicker datePicker = dialog.getWindow().findViewById(R.id.DatePicker_birth);
+                final DatePicker datePicker = birthView.findViewById(R.id.DatePicker_birth);
+
                 final Calendar calendar = Calendar.getInstance();
+
+                Button ok = birthView.findViewById(R.id.button_student_mydialog);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                // 一般用这种方式，给AlertDialog设置View，
+                // 不建议用这种： dialog.getWindow().setContentView(birthView)
+                builder.setView(birthView);
+
                 datePicker.init(calendar.get(Calendar.YEAR),
                         calendar.get(Calendar.MONTH),
                         calendar.get(Calendar.DAY_OF_MONTH), new DatePicker.OnDateChangedListener() {
@@ -281,9 +285,7 @@ public class MessageActivity extends AppCompatActivity implements View.OnClickLi
                                 tv_et_birth.setText(date);
                             }
                         });
-
-
-                Button ok = birthView.findViewById(R.id.button_student_mydialog);
+                final AlertDialog dialog = builder.create();
 
                 ok.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -293,6 +295,47 @@ public class MessageActivity extends AppCompatActivity implements View.OnClickLi
                         messageModel.setBirth(calendar.getTimeInMillis());
                         String date = "" + datePicker.getYear() + "/" + (datePicker.getMonth() + 1) + "/" + datePicker.getDayOfMonth();
                         tv_et_birth.setText(date);
+                    }
+                });
+
+                dialog.show();
+
+
+
+
+
+
+//                final AlertDialog dialog = new AlertDialog.Builder(this).create();
+//                dialog.show();
+//                LayoutInflater li_birth = LayoutInflater.from(context);
+//                View birthView = li_birth.inflate(R.layout.birth_dialog, null);
+//                dialog.getWindow().setContentView(birthView);
+//                //dialog.getWindow().setGravity(Gravity.CENTER_HORIZONTAL|Gravity.BOTTOM);//设置Dialog现实的位置
+//                final DatePicker datePicker = dialog.getWindow().findViewById(R.id.DatePicker_birth);
+//                final Calendar calendar = Calendar.getInstance();
+//                datePicker.init(calendar.get(Calendar.YEAR),
+//                        calendar.get(Calendar.MONTH),
+//                        calendar.get(Calendar.DAY_OF_MONTH), new DatePicker.OnDateChangedListener() {
+//                            @Override
+//                            public void onDateChanged(DatePicker datePicker, int i, int i1, int i2) {
+//                                calendar.set(i, i1, i2);
+//                                messageModel.setBirth(calendar.getTimeInMillis());
+//                                String date = "" + datePicker.getYear() + "/" + (datePicker.getMonth() + 1) + "/" + datePicker.getDayOfMonth();
+//                                tv_et_birth.setText(date);
+//                            }
+//                        });
+//
+//
+//                Button ok = birthView.findViewById(R.id.button_student_mydialog);
+//
+//                ok.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        calendar.set(datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth());
+//                        dialog.dismiss();
+//                        messageModel.setBirth(calendar.getTimeInMillis());
+//                        String date = "" + datePicker.getYear() + "/" + (datePicker.getMonth() + 1) + "/" + datePicker.getDayOfMonth();
+//                        tv_et_birth.setText(date);
 //                        long timeInMillis = calendar.getTimeInMillis();
 
 //                        if (!hasRecord) {
@@ -324,8 +367,8 @@ public class MessageActivity extends AppCompatActivity implements View.OnClickLi
 //                            messageModel.setBirth(calendar.getTimeInMillis());
 //
 //                        }
-                    }
-                });
+//                    }
+//                });
 
 //                AlertDialog.Builder birthBuilder = new AlertDialog.Builder(context);
 //                birthBuilder.setView(birthView);
@@ -408,6 +451,9 @@ public class MessageActivity extends AppCompatActivity implements View.OnClickLi
         } else {
             sqLiteDatabase1.insert("user", null, values1);
         }
+
+        // 在真正修改时，才发送更新事件
+        UpdateUserEvent.sendEvent(new UpdateUserEvent(messageModel.getName()));
 
         super.onBackPressed();
     }
